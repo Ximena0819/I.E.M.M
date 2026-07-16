@@ -3,9 +3,9 @@ import {
     serviceLeerCategorias,
     servicioActualizarCategorias,
     servicioEliminarCategorias
-} from "../service/categorias.service"
+} from "../service/categoria.service.js";
 
-export const CreateCategorias=()=>{
+export const CreateCategorias= async (req, res)=>{
     try{
         const categorias = await servicioCrearCategorias(req.body);
         res.status(201).json(categorias);
@@ -14,7 +14,7 @@ export const CreateCategorias=()=>{
     }
 };
 
-export const LeerCategorias= (req, res)=>{
+export const LeerCategorias= async (req, res)=>{
      try{
       const categorias = await servicioLeerCategorias();
         res.status(200).json(categorias);
@@ -22,7 +22,7 @@ export const LeerCategorias= (req, res)=>{
             res.status(500).json({error: error.message});
         }
 };
-export const ActualizarCategorias=()=>{
+export const ActualizarCategorias= async (req, res)=>{
     try{
         const Id=Number(req.params.id)
         const categorias=await servicioActualizarCategorias(Id,req.body);

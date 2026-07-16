@@ -3,7 +3,7 @@ import {
     serviceLeerImplemento,
     servicioActualizarImplemento,
     servicioEliminarImplemento
-} from "../service/implemento.service"
+} from "../service/implemento.service.js"
 
 export const CreateImplemento=()=>{
     try{
@@ -22,7 +22,7 @@ export const LeerImplemento= (req, res)=>{
             res.status(500).json({error: error.message});
         }
 };
-export const ActualizarImplemento=()=>{
+export const ActualizarImplemento= async (req, res )=>{
     try{
         const Id=Number(req.params.id)
         const implemento=await servicioActualizarImplemento(Id,req.body);
