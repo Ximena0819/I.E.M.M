@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Ubicacion {
+  id         Int          @id @default(autoincrement())
+  nombre     String       @unique @db.VarChar(16)
+  implementos Implemento[]
+}
+
+model Categoria {
+  id         Int          @id @default(autoincrement())
+  nombre     String       @unique @db.VarChar(16)
+  implementos Implemento[]
+}
+
+model Proveedor {
+  id         Int          @id @default(autoincrement())
+  nombre     String       @db.VarChar(16)
+  correo     String       @unique @db.VarChar(40)
+  telefono   String       @db.VarChar(16)
+  implementos Implemento[]
+}
+
+model Usuario {
+  id         Int          @id @default(autoincrement())
+  nombre     String       @db.VarChar(16)
+  apellido   String       @db.VarChar(16)
+  correo     String       @unique @db.VarChar(40)
+  cargo      Cargo
+  contraseña String       @db.VarChar(16)
+  tipo_documento TipoDocumento
+  documento  String       @unique @db.VarChar(16)
+  implementos Implemento[]
+}
+
+model Implemento {
+  id          Int          @id @default(autoincrement())
+  nombre      String       @db.VarChar(16)
+  codigo      String       @unique @db.VarChar(16)
+  estado      Estado
+  id_proveedor Int
+  id_ubicacion Int
+  id_categoria Int
+  id_usuarios  Int
+
+  proveedor   Proveedor    @relation(fields: [id_proveedor], references: [id])
+  ubicacion   Ubicacion    @relation(fields: [id_ubicacion], references: [id])
+  categoria   Categoria    @relation(fields: [id_categoria], references: [id])
+  usuario     Usuario      @relation(fields: [id_usuarios], references: [id])
+  responsables Responsable[]
+}
+
+model Responsable {
+  id            Int          @id @default(autoincrement())
+  tipo_documento TipoDocumento
+  documento     String       @unique @db.VarChar(16)
+  nombre        String       @db.VarChar(16)
+  apellido      String       @db.VarChar(16)
+  correo        String       @unique @db.VarChar(40)
+  cargo         Cargo
+  asignatura    String       @db.VarChar(20)
+  id_implemento Int
+
+  implemento    Implemento   @relation(fields: [id_implemento], references: [id])
+}
+
+enum Cargo {
+  SECRETARIA
+  COORDINADOR
+  RECTOR
+  DOCENTE
+}
+
+enum TipoDocumento {
+  CC
+  CE
+  PPT
+}
+
+enum Estado {
+  DISPONIBLE
+  AGOTADO
+}
