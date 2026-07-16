@@ -3,9 +3,9 @@ import {
     serviceLeerUsuario,
     servicioActualizarUsuario,
     servicioEliminarUsuario
-} from "../service/usuario.service"
+} from "../service/usuario.service.js"
 
-export const createUsuario=()=>{
+export const createUsuario= async (req, res)=>{
     try{
         const usuario = await servicioCrearUsuario(req.body);
         res.status(201).json(usuario);
@@ -22,7 +22,7 @@ export const leerUsuario= (req, res)=>{
             res.status(500).json({error: error.message});
         }
 };
-export const actualizarUsuario=()=>{
+export const actualizarUsuario= async (req, res)=>{
     try{
         const Id=Number(req.params.id)
         const user=await servicioActualizarUsuario(Id,req.body);

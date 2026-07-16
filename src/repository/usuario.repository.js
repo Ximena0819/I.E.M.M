@@ -1,21 +1,21 @@
-import  Prisma  from "../prisma.js"
+import  prisma  from "../prisma.js"
 
 export const crearUsuario=(userData)=>{
-    return Prisma.usuario.create({data:userData})  
+    return prisma.usuario.create({data:userData})  
 
 }
 export const leerUsuario=()=>{
-    return Prisma.usuario.findMany()
+    return prisma.usuario.findMany()
 
 }
 export const actualizarUsuario=(userId, userData)=>{
-    return Prisma.usuario.update({
+    return prisma.usuario.update({
         where: { id: userId },
         data: userData
     })
 }
 export const eliminarUsuario=(userId)=>{
-    return Prisma.usuario.delete({
+    return prisma.usuario.delete({
         where: { id: userId }
     })
 }

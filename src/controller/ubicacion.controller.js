@@ -3,9 +3,9 @@ import {
     serviceLeerUbicacion,
     servicioActualizarUbicacion,
     servicioEliminarUbicacion
-} from "../service/ubicacion.service"
+} from "../service/ubicacion.service.js"
 
-export const createUbicacion=()=>{
+export const createUbicacion= async (req, res)=>{
     try{
         const ubicacion = await servicioCrearUbicacion(req.body);
         res.status(201).json(ubicacion);
@@ -14,7 +14,7 @@ export const createUbicacion=()=>{
     }
 };
 
-export const leerUbicacion= (req, res)=>{
+export const leerUbicacion= async (req, res)=>{
      try{
       const ubicacion = await servicioLeerUbicacion();
         res.status(200).json(ubicacion);
@@ -22,7 +22,7 @@ export const leerUbicacion= (req, res)=>{
             res.status(500).json({error: error.message});
         }
 };
-export const actualizarUbicacion=()=>{
+export const actualizarUbicacion= async (req, res)=>{
     try{
         const Id=Number(req.params.id)
         const ubicacion=await servicioActualizarUbicacion(Id,req.body);

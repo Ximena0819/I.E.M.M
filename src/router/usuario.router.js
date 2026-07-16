@@ -3,7 +3,7 @@ import { actualizarUsuario,
     createUsuario,
      eliminarUsuario, 
      leerUsuario } 
-     from "../controller/usuario.controller";
+     from "../controller/usuario.controller.js";
 
 
 const router = Router();

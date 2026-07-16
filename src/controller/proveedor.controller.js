@@ -3,9 +3,9 @@ import {
     serviceLeerProveedor,
     servicioActualizarProveedor,
     servicioEliminarProveedor
-} from "../service/proveedor.service"
+} from "../service/proveedor.service.js";
 
-export const createProveedor=()=>{src/service
+export const createProveedor= async (req, res)=>{
     try{
         const proveedor = await servicioCrearProveedor(req.body);
         res.status(201).json(proveedor);
@@ -14,7 +14,7 @@ export const createProveedor=()=>{src/service
     }
 };
 
-export const leerProveedor= (req, res)=>{
+export const leerProveedor= async (req, res)=>{
      try{
       const proveedor = await servicioLeerProveedor();
         res.status(200).json(proveedor);
@@ -22,7 +22,7 @@ export const leerProveedor= (req, res)=>{
             res.status(500).json({error: error.message});
         }
 };
-export const actualizarProveedor=()=>{
+export const actualizarProveedor= async (req, res)=>{
     try{
         const Id=Number(req.params.id)
         const proveedor=await servicioActualizarProveedor(Id,req.body);

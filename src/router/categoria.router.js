@@ -4,7 +4,7 @@ crearCategoria,
 leerCategorias,
 actualizarCategoria,
 eliminarCategoria,
-} from "../controller/categoria.controller.js";
+} from "../controller/categorias.controller.js";
 
 const router = Router();
 router.post("/", crearCategoria);

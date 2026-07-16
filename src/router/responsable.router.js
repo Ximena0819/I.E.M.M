@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { actualizarResponsable, createResponsable, eliminarResponsable, leerResponsable } from "../controller/responsable.controller.js";
+import { actualizarResponsable,
+     createResponsable, 
+     eliminarResponsable, 
+     leerResponsable } from "../controller/responsable.controller.js";
 
 const router = Router();
 router.post("/", createResponsable);

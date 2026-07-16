@@ -1,4 +1,7 @@
-import { actualizarCategoria, crearCategoria, eliminarCategoria, leerCategoria } from "../repository/categoria.repository.js";
+import { actualizarCategoria,
+     crearCategoria,
+      eliminarCategoria,
+       leerCategoria } from "../repository/categoria.repository.js";
 
 
 export const servicioCrearCategoria = (categoriaData) => {

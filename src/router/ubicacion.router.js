@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { actualizarUbicacion, createUbicacion, eliminarUbicacion, leerUbicacion } from "../controller/ubicacion.controller.js";
+import { actualizarUbicacion, 
+    createUbicacion, 
+    eliminarUbicacion,
+    leerUbicacion } from "../controller/ubicacion.controller.js";
 
 const router = Router();
 router.post("/", createUbicacion);

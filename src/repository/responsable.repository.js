@@ -1,4 +1,4 @@
-import  Prisma from "../prisma.js"
+import  prisma from "../prisma.js"
 
 export const crearResponsable=(responsableData)=>{
     return prisma.responsable.create({data:responsableData})  

@@ -1,7 +1,7 @@
 import prisma from "../prisma.js"
 
-export const crearProveedor=(proveedorData)=>{
-    return prisma.proveedor.create({data:proveedorData})  
+export const crearProveedor= (proveedorData)=>{
+    return await prisma.proveedor.create({data:proveedorData})  
 
 }
 export const leerProveedor=()=>{

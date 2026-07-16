@@ -3,26 +3,26 @@ import {
     servicioLeerResponsable,
     servicioActualizarResponsable,
     servicioEliminarResponsable
-} from "../service/responsable.service"
+} from "../service/responsable.service.js"
 
-export const createResponsable=()=>{
+export const createResponsable= async (req, res)=>{
     try{
-        const responsable = await servicioResponsable(req.body);
+        const responsable = await servicioCrearResponsable(req.body);
         res.status(201).json(responsable);
     }catch (e){
         res.status(500).json({error: e.message});
     }
 };
 
-export const leerResponsable= (req, res)=>{
+export const leerResponsable= async (req, res)=>{
      try{
-      const responsable = await serviceLeeResponsable();
+      const responsable = await servicioLeerResponsable();
         res.status(200).json(responsable);
         }catch (error){
             res.status(500).json({error: error.message});
         }
 };
-export const actualizarResponsable=()=>{
+export const actualizarResponsable= async (req, res)=>{
     try{
         const Id=Number(req.params.id)
         const user=await servicioActualizarResponsable(Id,req.body);
